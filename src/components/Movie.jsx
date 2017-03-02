@@ -22,7 +22,7 @@ export default class Movie extends Component {
     let ratingStyle = { color: ratingColor }
     let actorList = this.props.movie.actors.map((actor) => { return (<li>{actor}</li>) })
     let releaseDate = moment(this.props.movie.releaseDate).format('Do MMMM YYYY')
-    
+
     return (
       <li>
         <div>

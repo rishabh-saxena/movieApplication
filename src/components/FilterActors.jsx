@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 export default class FilterActors extends Component {
-  constructor (props) {
-    super(props)
-  }
   updateList (event) {
     this.props.filterMovies(event.target.value)
   }
