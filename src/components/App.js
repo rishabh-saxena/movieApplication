@@ -6,14 +6,26 @@ export default class App extends Component {
   constructor (props)
   {
     super(props)
-    this.state = {moviesData: [], actors: []}
+    this.state = {moviesData: [], actors: [], filteredMovies: []}
+  }
+  filterList (actorName) {
+    let filterMovies = this.state.moviesData
+    if (actorName === 'All') {
+      filterMovies = this.state.moviesData
+    }
+    else {
+      filterMovies = this.state.moviesData.filter((movie) => {
+        return (movie.actors.includes(actorName))
+      })
+    }
+    this.setState((oldState) => { oldState.filteredMovies = filterMovies })
   }
   render () {
     return (
       <div className="Movies">
      <center> <h1>THIS WEEK MOVIES</h1></center>
-     <FilterActors actors={this.state.actors}/>
-     <MovieList movieList={this.state.moviesData}/>
+     <FilterActors actorList={this.state.actors} filterMovies={this.filterList.bind(this)}/>
+     <MovieList movieList={this.state.filteredMovies}/>
       </div>
     )
   }
@@ -25,7 +37,7 @@ export default class App extends Component {
         // this.setState({ todos: result })
         let actors = []
         let actorMovies = []
-        //console.log(result)
+        // console.log(result)
         result.forEach((movieData) =>
         {
           movieData.actors.forEach((actor) => {
@@ -34,7 +46,7 @@ export default class App extends Component {
             }
           })
         })
-        this.setState({moviesData: result, actors: actors})
+        this.setState({moviesData: result, actors: actors, filteredMovies: result})
       })
       .catch((err) => {
         console.log(err)
