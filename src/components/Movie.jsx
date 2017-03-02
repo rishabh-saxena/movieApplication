@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 export default class Movie extends Component {
   ratingColors (rating) {
     let ratingColor
@@ -16,10 +17,12 @@ export default class Movie extends Component {
     }
   }
   render () {
-    let style = { backgroundColor: this.props.movie.theme, width: 1000, height: 25 }
+    let style = { backgroundColor: this.props.movie.theme, width: 5000, height: 25 }
     let ratingColor = this.ratingColors(this.props.movie.rating)
     let ratingStyle = { color: ratingColor }
     let actorList = this.props.movie.actors.map((actor) => { return (<li>{actor}</li>) })
+    let releaseDate = moment(this.props.movie.releaseDate).format('Do MMMM YYYY')
+    
     return (
       <li>
         <div>
@@ -29,7 +32,7 @@ export default class Movie extends Component {
           <h3>Actors</h3>
           <div><ol>{actorList}</ol></div>
           <p style={ratingStyle}>Rating:{this.props.movie.rating}/5</p>
-          <p>Released On:{this.props.movie.releaseDate}</p>
+          <p>Released On:{releaseDate}</p>
         </div>
       </li>
     )
