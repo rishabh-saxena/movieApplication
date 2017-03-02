@@ -3,6 +3,7 @@ import apiInterface from '../apiInterface.js'
 import FilterActors from './FilterActors.jsx'
 import MovieList from './MovieList.jsx'
 import NProgress from 'react-nprogress'
+import '../../public/index.css'
 export default class App extends Component {
   constructor (props) {
     super(props)
