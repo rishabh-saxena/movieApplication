@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import apiInterface from '../apiInterface.js'
 import FilterActors from './FilterActors.jsx'
 import MovieList from './MovieList.jsx'
+import NProgress from 'react-nprogress'
 export default class App extends Component {
   constructor (props) {
     super(props)
@@ -19,7 +20,11 @@ export default class App extends Component {
     }
     this.setState((oldState) => { oldState.filteredMovies = filterMovies })
   }
+  componentWillMount () {
+    NProgress.start()
+  }
   render () {
+    NProgress.done()
     return (
       <div className="Movies">
         <center> <h1>THIS WEEK MOVIES</h1></center>
