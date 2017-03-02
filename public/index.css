@@ -2,3 +2,7 @@ ul
 {
 list-style: none;
 }
+p.rating
+{
+  float:right;
+}

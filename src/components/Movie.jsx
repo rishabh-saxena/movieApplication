@@ -31,7 +31,7 @@ export default class Movie extends Component {
           <i>{this.props.movie.description}</i>
           <h3>Actors</h3>
           <div><ol>{actorList}</ol></div>
-          <p style={ratingStyle}>Rating:{this.props.movie.rating}/5</p>
+          <p className='rating' style={ratingStyle}>Rating:{this.props.movie.rating}/5</p>
           <p>Released On:{releaseDate}</p>
         </div>
       </li>
